@@ -1,15 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Card from './components/Card';
+import ListaTareas from './components/ListaTareas';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Base para Task List
-        </p>
-      </header>
+    <div className="flex justify-center m-0 bg-bckg ">
+      <Card>
+        <ListaTareas/>
+      </Card>
     </div>
   );
 }
