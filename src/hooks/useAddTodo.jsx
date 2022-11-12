@@ -2,24 +2,25 @@ import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 
 export default function useAddTodo() {
-  const handleState = useContext(TodoContext);
+  const { estado, setEstado } = useContext(TodoContext);
 
-  const addTodo = (index) => {
-    const text = prompt("Ingrese tarea");
-    const newarray = [
-      ...handleState.estado,
+  const addTodo = (titulo, descripcion) => {
+    
+    const newArray = [
+      ...estado,
       {
-        id: handleState.estado.length + 1,
-        task: text,
-        completa: false,
+        id: estado.length + 1,
+        title: titulo,
+        descripcion: descripcion,
+        completa: false
       },
     ];
 
-    for (var i = 0; i < newarray.length; i++) {
-      newarray[i].id = i;
+    for (var i = 0; i < newArray.length; i++) {
+      newArray[i].id = i;
     }
 
-    handleState.handleState(newarray);
+    setEstado(newArray);
   };
   return addTodo;
 }

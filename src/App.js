@@ -6,7 +6,7 @@ import { TodoManage } from "./context/TodoContext";
 function App() {
   return (
     <TodoManage>
-      <div className="flex justify-center m-0 h-screen bg-bckg ">
+      <div className="flex justify-center h-full m-0 p-4 bg-bckg ">
         <Card>
           <ListaTareas/>
         </Card>

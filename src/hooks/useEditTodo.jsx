@@ -4,18 +4,15 @@ import {TodoContext} from "../context/TodoContext"
 
 export default function useEditTodo() {
 	
-	const estado = useContext(TodoContext)
+  const { estado, setEstado, taskId } = useContext(TodoContext);
 
-	const editTodo = (index) => {
-    const todos = [...estado.estado];
-    const edited =  prompt('Actualice el título de la tarea', todos[index].task)
-    todos[index].task = edited
+	const editTodo = (titulo, descripcion) => {
+    const todos = [...estado];
+    console.log('wtf', todos[taskId])
+    todos[taskId].title = titulo
+    todos[taskId].descripcion = descripcion
   
-
-    for (var i = 0; i < todos.length; i++) {
-      todos[i].id = i;
-    }
-    estado.handleState(todos)
+    setEstado(todos)
   };
 
   return editTodo;
