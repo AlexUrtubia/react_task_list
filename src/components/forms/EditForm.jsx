@@ -39,6 +39,7 @@ function EditForm() {
 								value={titulo}
 								onChange={(event) => {setTitulo(event.target.value)}}
 								minLength="3"
+								placeholder={estado[id].title}
 								maxLength={20}
 								required
 							/>
@@ -56,6 +57,7 @@ function EditForm() {
 								type="text"
 								name="descripcion"
 								value={descripcion}
+								placeholder={estado[id].descripcion}
 								onChange={(event) => {setDescripcion(event.target.value)}}
 								
 							/>

@@ -6,7 +6,7 @@ import useAddTodo from '../../hooks/useAddTodo';
 function AddForm() {
 
 	const add = useAddTodo()
-  const { setNewForm } = useContext(TodoContext)
+	const { setNewForm } = useContext(TodoContext)
 
 	const [title, setTitle] = useState('')
 	const [descripcion, setDescripcion] = useState('')

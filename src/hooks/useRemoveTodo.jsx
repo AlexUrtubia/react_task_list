@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 
 export default function useRemoveTodo() {
-  const { estado, setEstado } = useContext(TodoContext);
+  const { estado, saveTodo } = useContext(TodoContext);
 
   const removeTodo = (index) => {
 		const todos = [...estado];
@@ -14,8 +14,8 @@ export default function useRemoveTodo() {
       newArray[i].id = i;
     }
 		
-    setEstado(newArray);
-		
+    saveTodo(newArray);
   };
+
   return removeTodo;
 }

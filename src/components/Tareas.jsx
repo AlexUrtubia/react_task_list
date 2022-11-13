@@ -1,19 +1,30 @@
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { TodoContext } from "../context/TodoContext";
 import EditIcon from "@mui/icons-material/Edit";
 import useRemoveTodo from "../hooks/useRemoveTodo";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import AddForm from "./forms/AddForm";
-import EditForm from "./forms/EditForms";
+import EditForm from "./forms/EditForm";
 
 export default function Tareas() {
-  const { estado, newForm, setNewForm, editForm, setEditForm, setTaskId } = useContext(TodoContext);
-  const remove = useRemoveTodo();
 
+  const { estado, setEstado, newForm, setNewForm, editForm, setEditForm, setTaskId } = useContext(TodoContext);
+  const remove = useRemoveTodo();
   const [taskState, setTaskState] = useState(false);
+
+  // const getData = () => {
+    
+  //   const hola = localStorage.getItem('estado');
+  //   console.log(hola[0], "localStorage.getItem")
+  // }
+
+  // useEffect(() => {
+  //   setEstado(localStorage.getItem('estado'));
+  // }, [])
+
 
   const handleNew = () => {
     setNewForm(true);
