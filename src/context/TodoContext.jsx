@@ -11,13 +11,13 @@ export const TodoManage = (props) => {
   const [taskId, setTaskId] = useState(false);
   
   useEffect(() => {
-      const localStorageTodos = localStorage.getItem('V1')
-      if (localStorageTodos) {
-          setEstado(JSON.parse(localStorageTodos))
-        } else {
-          setEstado(tareas)
-        }
-      }, []);
+    const localStorageTodos = localStorage.getItem('V1')
+    if (localStorageTodos) {
+        setEstado(JSON.parse(localStorageTodos))
+    } else {
+      setEstado(tareas)
+    }
+  }, []);
 
   const saveTodo = (newArray) => {
     const stringifyTodos = JSON.stringify(newArray)

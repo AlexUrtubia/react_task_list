@@ -11,20 +11,9 @@ import EditForm from "./forms/EditForm";
 
 export default function Tareas() {
 
-  const { estado, setEstado, newForm, setNewForm, editForm, setEditForm, setTaskId } = useContext(TodoContext);
+  const { estado, newForm, setNewForm, editForm, setEditForm, setTaskId } = useContext(TodoContext);
   const remove = useRemoveTodo();
   const [taskState, setTaskState] = useState(false);
-
-  // const getData = () => {
-    
-  //   const hola = localStorage.getItem('estado');
-  //   console.log(hola[0], "localStorage.getItem")
-  // }
-
-  // useEffect(() => {
-  //   setEstado(localStorage.getItem('estado'));
-  // }, [])
-
 
   const handleNew = () => {
     setNewForm(true);
@@ -34,7 +23,6 @@ export default function Tareas() {
     setEditForm(true);
 		setTaskId(value)
   };
-
 
   if (estado.length === 0) {
     return (
