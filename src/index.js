@@ -3,24 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Header from './components/Header';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from './components/Home';
-import About from './components/About';
+import { ChakraProvider } from '@chakra-ui/react'
+import { TodoManage } from "./context/TodoContext";
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Router>
-      <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tareas" element={<App/>} />
-          <Route path="/about" element={<About/>} />
-        </Routes>
-      </Router>
-  </React.StrictMode>
+  <ChakraProvider>
+    <TodoManage>
+      <React.StrictMode>
+        <App/>
+      </React.StrictMode>
+  </TodoManage>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,23 +1,25 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import { Text, Flex } from '@chakra-ui/react'
+
 
 export default function Header() {
   return (
-    <div className='flex justify-between px-7 h-12 self-start w-full bg-primary'>
-      <div className="self-center">
-        <p className='text-xl font-bold'>React Lazy Loading App</p>
-      </div>
-      <div className="self-center font-medium space-x-5">
+    <Flex justify="space-between" textColor={'white'} as={'nav'} px='12' h={'70'} w='full' className='bg-primary'>
+      <Flex alignSelf='center'>
+        <Text className='text-2xl font-bold'>Task List App</Text>
+      </Flex>
+      <Flex alignSelf={'center'}  justifySelf={'end'} experimental_spaceX={'8'}>
         <Link to={'/'}>
-          <span>Home</span>
+          <Text className='text-xl'>Home</Text>
         </Link>
         <Link to={'/tareas'}>
-          <span>Tareas</span>
+          <Text className='text-xl'>Tareas </Text>
         </Link>
         <Link to={'/about'}>
-          <span>About</span>
+          <Text className='text-xl'>About </Text>
         </Link>
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   )
 }

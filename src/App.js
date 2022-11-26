@@ -1,17 +1,21 @@
 import './App.css';
-import Card from './components/Card';
 import ListaTareas from './components/ListaTareas';
-import { TodoManage } from "./context/TodoContext";
+import Header from './components/Header';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './components/Home';
+import About from './components/About';
+
 
 function App() {
   return (
-    <TodoManage>
-      <div className="flex justify-center h-full m-0 p-4 bg-bckg ">
-        <Card>
-          <ListaTareas/>
-        </Card>
-      </div>
-    </TodoManage>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tareas" element={<ListaTareas/>} />
+        <Route path="/about" element={<About/>} />
+      </Routes>
+    </Router>
   );
 }
 

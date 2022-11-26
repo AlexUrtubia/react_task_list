@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { TodoContext } from '../../context/TodoContext';
 import useAddTodo from '../../hooks/useAddTodo';
-
+import {  FormControl, FormLabel, Input, Flex, Button } from '@chakra-ui/react'
 
 function AddForm() {
 
@@ -18,61 +18,59 @@ function AddForm() {
   }
 
   return (
-    <div>
-      <div className="flex flex-col mt-3">
-				<form onSubmit={ handleSubmit }>
-					<div className="flex items-center mb-6">
-						<div className="w-2/5">
-							<label className="block text-gray-500 font-bold text-right mb-1  pr-4">
-								Título de tarea
-							</label>
-						</div>
-						<div className="w-3/5">
-							<input
-								className="bg-gray-100 border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
+		<Flex direction={'column'} justifyContent={'center'} mt='-16'>
+			<form onSubmit={ handleSubmit }>
+				<Flex alignItems={'center'} mb={6}>
+					<FormControl isRequired>
+						<Flex w={'100%'} direction={'row'} justifyContent={'center'} alignItems={'center'}>
+							<FormLabel  color="gray.600" textAlign={'right'} w={32} fontWeight={'bold'} >Título de tarea</FormLabel>
+							<Input
+								focusBorderColor="cyan.400"
+								htmlSize={32} width='auto'
+								variant="filled"
 								type="text"
 								name="title"
 								value={title}
 								onChange={(event) => {setTitle(event.target.value)}}
 								minLength="3"
 								maxLength={20}
-								required
 							/>
-						</div>
-					</div>
-					<div className="flex items-center mb-6">
-						<div className="w-2/5">
-							<label className="block text-gray-500 font-bold text-right mb-1  pr-4">
-								Descripción
-							</label>
-						</div>
-						<div className="w-3/5">
-							<input
-								className="bg-gray-100 border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
+						</Flex>
+					</FormControl>
+				</Flex>
+				<Flex alignItems={'center'} mb={6}>
+					<FormControl>
+						<Flex w={'100%'} direction={'row'} justifyContent={'center'} alignItems={'center'}>
+							<FormLabel textAlign={'right'} w={32} color="gray.600" fontWeight={'bold'} >Descripción</FormLabel>
+							<Input
+								focusBorderColor="cyan.400"
+								htmlSize={32} width='auto'
+								variant="filled"
 								type="text"
 								name="descripcion"
 								value={descripcion}
 								onChange={(event) => {setDescripcion(event.target.value)}}
-								
 							/>
-						</div>
-					</div>
-					<div className="flex justify-center  items-center mb-2">
-						<div className="space-x-4 self-center">
-							<button className="bg-red-500 hover:bg-red-400 hover:drop-shadow-xl text-white font-bold py-2 px-4 rounded-full w-24" onClick={ () => setNewForm(false)}>
-								Cancelar
-							</button>
-							<button
-								className="bg-primary hover:bg-blue-400 hover:drop-shadow-xl text-white font-bold py-2 px-4 rounded-full w-24"
-								type="submit"
-							>
-								Crear
-							</button>
-						</div>
-					</div>
-				</form>
-      </div>
-    </div>
+						</Flex>
+					</FormControl>
+				</Flex>
+				<Flex justifyContent={'center'} mb='4' experimental_spaceX={4}>
+					<Button bgColor="red.500"
+						_hover={{bgColor:"red.400"}}
+						textColor="white" w={28}
+						onClick={ () => setNewForm(false)}>
+						Cancelar
+					</Button>
+					<Button
+						bgColor="cyan.400" textColor="white" w={28}
+						_hover={{bgColor:"cyan.300"}}
+						type="submit"
+					>
+						Crear
+					</Button>
+				</Flex>
+			</form>
+		</Flex>
   );
 }
 

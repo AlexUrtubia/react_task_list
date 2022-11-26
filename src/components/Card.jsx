@@ -1,9 +1,12 @@
 import React from 'react'
+import { Flex } from '@chakra-ui/react'
 
 export default function Card(props) {
   return (
-    <div className="w-3/5 self-start my-10 p-6 pb-9 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-        {props.children}
-    </div>
+    <Flex justifySelf={'center'}  p={10} bgColor='white' w={'60%'} 
+    className="rounded-lg shadow-md flex-col"
+    >
+      {props.children}
+    </Flex>
   )
 }
