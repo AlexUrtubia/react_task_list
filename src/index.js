@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react'
 import { TodoManage } from "./context/TodoContext";
-
+import { ColorModeScript } from '@chakra-ui/react'
+import theme from './theme'
 
 
 
@@ -14,9 +15,10 @@ root.render(
   <ChakraProvider>
     <TodoManage>
       <React.StrictMode>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <App/>
       </React.StrictMode>
-  </TodoManage>
+    </TodoManage>
   </ChakraProvider>
 );
 

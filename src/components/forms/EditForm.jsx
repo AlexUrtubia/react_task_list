@@ -3,7 +3,6 @@ import { TodoContext } from '../../context/TodoContext';
 import useEditTodo from '../../hooks/useEditTodo';
 import {  FormControl, FormLabel, Input, Flex, Button, Heading } from '@chakra-ui/react'
 
-
 function EditForm() {
 
 	const edit = useEditTodo()
@@ -72,7 +71,7 @@ function EditForm() {
 						_hover={{bgColor:"cyan.300"}}
 						type="submit"
 					>
-						Crear
+						Editar
 					</Button>
 				</Flex>
 			</form>
