@@ -18,6 +18,7 @@ export default function Home() {
                 <span className="text-blue-500"><Link to={'/tareas'}> Tareas </Link></span>
                 para comenzar. Edite o elimine las tareas por defecto si lo desea y agregue sus propias tareas.  
               </Text>
+              <Text as='em' fontSize='xl'>Se recomienda iniciar sesión con alguna cuenta de Google para una mejor gestión de sus tareas</Text>
             </Flex>
           </Box>
         </Flex>

@@ -5,19 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react'
 import { TodoManage } from "./context/TodoContext";
-import { ColorModeScript } from '@chakra-ui/react'
-import theme from './theme'
+import { UserProvider } from './hooks/useUser';
 
 
-
+// Initialize Firebase
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ChakraProvider>
     <TodoManage>
-      <React.StrictMode>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <App/>
-      </React.StrictMode>
+      <UserProvider>
+        <React.StrictMode>
+          <App/>
+        </React.StrictMode>  
+      </UserProvider>
     </TodoManage>
   </ChakraProvider>
 );

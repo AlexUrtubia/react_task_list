@@ -77,7 +77,7 @@ export default function Tareas() {
                 onClick={() => remove(task.id)}
               >
                 <Tooltip label='Eliminar tarea'>
-                <DeleteIcon w={5} h={5} color={'red.500'}  _hover={{ color: "red.400" }}  className="hover:drop-shadow-xl"/>
+                  <DeleteIcon w={5} h={5} color={'red.500'}  _hover={{ color: "red.400" }}  className="hover:drop-shadow-xl"/>
                 </Tooltip>
               </Button>
               <Heading as='h5' size='md' mt={2} className="absolute">{task.title}</Heading>
