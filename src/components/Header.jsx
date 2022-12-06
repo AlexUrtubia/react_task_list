@@ -1,24 +1,29 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import { Text, Flex, Button, Avatar, Icon } from '@chakra-ui/react'
+import { Text, Flex, Button, Avatar } from '@chakra-ui/react'
 import { useUser } from '../hooks/useUser'
 import LogoutIcon from '@mui/icons-material/Logout';
 import { getAuth } from '@firebase/auth'
 import { initializeApp } from '@firebase/app'
 import { firebaseConfig } from '../firebaseConfig'
 
+
+
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 
 export default function Header({click, error}) {
 
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
+  const localUser = JSON.parse(localStorage.getItem('activeUser'))
+
 
   const handleSignOut = () => {
     setUser(null);
     auth
       .signOut()
       .then(() => {
+        localStorage.setItem('activeUser', null)
         window.location.reload()
       })
       .catch((error) => console.log(error))
@@ -29,10 +34,10 @@ export default function Header({click, error}) {
         <Text className='text-2xl font-bold'>Task List App</Text>
       </Flex>
       <Flex alignSelf='center' justify={'space-between'}  direction={'row'}>
-        { user.name ? 
+        { localUser ? 
           <>
-            <Text className='text-xl font-normal text-black'> Hola, {user.name} </Text> 
-            <Avatar ml={4} size='sm' referrerpolicy='no-referrer' src={user.profileImage} />
+            <Text className='text-xl font-normal text-black'> Hola, {localUser.displayName} </Text> 
+            <Avatar ml={4} size='sm' referrerpolicy='no-referrer' src={localUser.photoURL} />
           </>
           :
           <Flex alignSelf='center' justify={'space-between'}  direction={'column'}>
@@ -53,7 +58,7 @@ export default function Header({click, error}) {
         <Link to={'/about'}>
           <Text _hover={{ textShadow:'1px 1px #DDFFFC' }} className='text-xl'>About</Text>
         </Link>
-        { user.name && 
+        { localUser && 
         <Flex alignSelf={'center'} pl={8}>
           <Button   bg={'none'}  _hover={{bgColor:'cyan.300'}} onClick={handleSignOut}>
             <LogoutIcon />

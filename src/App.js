@@ -15,7 +15,7 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 function App() {
   const [ errorMessage, setErrorMessage] = useState('')
-  const { user, setUser } = useUser();
+  const {  setUser } = useUser();
   const { setCurrentUser } = useContext(TodoContext);
 
   const handleLoggin = () => {
@@ -24,6 +24,8 @@ function App() {
     signInWithPopup(auth, provider)
       .then(useCredentials => {
         console.log(`Welcome ${useCredentials.user.displayName}`)
+        const lSUser = JSON.stringify(useCredentials.user)
+        localStorage.setItem('activeUser', lSUser)
         setUser({ name: useCredentials.user.displayName, profileImage: useCredentials.user.photoURL, email: useCredentials.user.email})
         setCurrentUser({ name: useCredentials.user.displayName, profileImage: useCredentials.user.photoURL, email: useCredentials.user.email})
       }).catch(error => {
