@@ -16,20 +16,28 @@ export const TodoManage = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    console.log(user, 'usuario actual')
-    console.log(currentUser, 'usuario actual')
-    if (currentUser != null) {
-      const stringifyTodos = JSON.stringify(tareas)
-      localStorage.setItem(`${currentUser.email}`, stringifyTodos)
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
     const auth = getAuth(firebaseApp)
     auth.onAuthStateChanged((user) => {
       setCurrentUser(user)
     });
   }, []);
+
+  useEffect(() => {
+    console.log(user, 'usuario actual')
+    console.log(currentUser, 'usuario actual')
+    if (currentUser != null) {
+      if (localStorage.getItem(`${currentUser.email}`)) {
+        const localStorageTodos = localStorage.getItem(`${currentUser.email}`)
+        setEstado(JSON.parse(localStorageTodos))
+      } else {
+        const stringifyTodos = JSON.stringify(tareas)
+        localStorage.setItem(`${currentUser.email}`, stringifyTodos)
+        const localStorageTodos = localStorage.getItem(`${currentUser.email}`)
+        setEstado(JSON.parse(localStorageTodos))
+      }
+    }
+  }, [currentUser]);
+
 
   useEffect(() => {
     if (currentUser != null) {
