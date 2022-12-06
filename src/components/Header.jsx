@@ -7,7 +7,6 @@ import { getAuth } from '@firebase/auth'
 import { initializeApp } from '@firebase/app'
 import { firebaseConfig } from '../firebaseConfig'
 
-
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth()
 
@@ -16,7 +15,7 @@ export default function Header({click, error}) {
   const { user, setUser } = useUser();
 
   const handleSignOut = () => {
-    setUser({});
+    setUser(null);
     auth
       .signOut()
       .then(() => {

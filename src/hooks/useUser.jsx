@@ -4,6 +4,7 @@ const userContextDefault = {
   user: {
     name: '',
     profileImage: '',
+    email: '',
   },
   setUser: () => {}
 }
